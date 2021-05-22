@@ -1,13 +1,59 @@
-import Link from "next/link"
-const Home = (props) =>{
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+const Home = ({products}) =>{
+
+  const productList = products.map(product=>{
+    return(
+      <Card style={{
+        width:"300px",
+        margin:"20px"
+      }} key={product._id}>
+       <CardActionArea>
+         <CardMedia
+         style={{height:"190px"}}
+           image={product.imageUrl}
+           title={product.name}
+         />
+         <CardContent>
+           <Typography gutterBottom variant="h5" component="h2">
+             {product.name}
+           </Typography>
+         <Typography variant="body2" color="textSecondary" component="p">
+             Price ${product.price}
+           </Typography>
+         </CardContent>
+       </CardActionArea>
+       <CardActions>
+         <Button  size="small" color="primary">
+           Know more
+         </Button>
+       </CardActions>
+     </Card>
+     
+    )
+  })
   return (
-    <div>
-      <h1>Hello next.js</h1>
-      <h1>{props.message}</h1>
-      <Link href="/product"><a>Go to Product page</a></Link>
+    <div className="card_main">
+     {productList}
     </div>
   )
 }
 
+//Network request for fetching the data from the Server
+export async function getStaticProps(){
+  const res = await fetch("http://localhost:3000/api/products")
+  const data = await res.json();
+  return{
+    props:{
+      products:data
+    }
+  }
+}
 
 export default Home;

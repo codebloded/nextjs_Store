@@ -9,7 +9,7 @@ const Navbar = () => {
         <Toolbar>
         
         <Link  href="/"><a style={{flexGrow:"1"}} ><Typography  variant="h6">
-            News
+            Next Store
           </Typography></a></Link>
           
           <Link href="/login"><a><Button color="default" style={{color:"white"}}>Login</Button></a></Link>
