@@ -4,6 +4,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
+import Link from "next/link"
 import Typography from '@material-ui/core/Typography';
 
 const Home = ({products}) =>{
@@ -30,9 +31,9 @@ const Home = ({products}) =>{
          </CardContent>
        </CardActionArea>
        <CardActions>
-         <Button  size="small" color="primary">
-           Know more
-         </Button>
+        <Link href="/product/[pid]" as={`/product/${product._id}`}><a><Button  size="small" color="primary">
+            View Product
+         </Button></a></Link> 
        </CardActions>
      </Card>
      
