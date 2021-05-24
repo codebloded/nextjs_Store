@@ -6,15 +6,13 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Link from "next/link"
 import Typography from '@material-ui/core/Typography';
+import baseURL from "../helpers/baseURL"
 
 const Home = ({products}) =>{
 
   const productList = products.map(product=>{
     return(
-      <Card style={{
-        width:"300px",
-        margin:"20px"
-      }} key={product._id}>
+      <Card className="card_i" key={product._id}>
        <CardActionArea>
          <CardMedia
          style={{height:"190px"}}
@@ -48,7 +46,7 @@ const Home = ({products}) =>{
 
 //Network request for fetching the data from the Server
 export async function getStaticProps(){
-  const res = await fetch("http://localhost:3000/api/products")
+  const res = await fetch(`${baseURL}/api/products`)
   const data = await res.json();
   return{
     props:{
