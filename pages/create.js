@@ -1,4 +1,4 @@
-import { Button, Snackbar, TextField } from "@material-ui/core"
+import { Button, Paper, Snackbar, TextField } from "@material-ui/core"
 import { useState } from "react"
 import baseUrl from "../helpers/baseURL";
 function Create() {
@@ -48,6 +48,8 @@ function Create() {
     return (
         <div>
             <h1>Add Product</h1>
+            <Paper className="authCard">
+
             <form className="form" onSubmit={(e) => handleSubmit(e)}>
                 <TextField className="text" id="standard-basic" onChange={(e) => setName(e.target.value)} label="Product name" />
                 <TextField className="text" id="standard-basic" type="number" onChange={(e) => setPrice(e.target.value)} label="Price" />
@@ -55,6 +57,7 @@ function Create() {
                 <TextField id="standard-basic" className="text" onChange={(e) => setDescription(e.target.value)} label="Description" />
                 <Button variant="contained" color="primary" type="submit">Add Product</Button>
             </form>
+            </Paper>
         </div>
 
     )
